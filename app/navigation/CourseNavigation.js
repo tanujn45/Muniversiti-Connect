@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import CourseInfo from "../screens/CourseInfo";
 import VideoPlayer from "../components/VideoPlayer";
+import Lesson from "../screens/Lesson";
 
 const Stack = createStackNavigator();
 
@@ -23,8 +24,8 @@ const CourseNavigation = () => {
       />
       <Stack.Screen
         options={{ headerShown: false }}
-        name="VideoPlayer"
-        component={VideoPlayer}
+        name="Lesson"
+        component={Lesson}
       />
     </Stack.Navigator>
   );

@@ -5,7 +5,14 @@ import * as firebase from "firebase";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import AuthNavigation from "./app/navigation/AuthNavigation";
-// import HomeScreen from "./app/screens/HomeScreen";
+import CourseInfo from "./app/screens/CourseInfo";
+import Lesson from "./app/screens/Lesson";
+import BrandDoc from "./app/screens/BrandDoc";
+import Welcome from "./app/screens/Welcome";
+import PhoneNumber from "./app/screens/PhoneNumber";
+import OTPVerification from "./app/screens/OTPVerification";
+import CompleteProfile from "./app/screens/CompleteProfile";
+import AppNavigation from "./app/navigation/AppNavigation";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -20,8 +27,7 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <AuthNavigation />
-        {/* <HomeScreen /> */}
+        <AppNavigation />
       </NavigationContainer>
     );
   }

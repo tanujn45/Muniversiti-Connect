@@ -1,12 +1,14 @@
 import React from "react";
-import { View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, StyleSheet } from "react-native";
+import {
+  createBottomTabNavigator,
+  BottomTabBar,
+} from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
-import Home from "../screens/Home";
 import CourseInfo from "../screens/CourseInfo";
-import TabBar from "../components/TabBar";
 import colors from "../constants/colors";
 import CourseNavigation from "./CourseNavigation";
+import { BlurView } from "expo-blur";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,19 +20,28 @@ const AppNavigation = () => {
         inactiveTintColor: colors.white,
         showLabel: false,
         style: {
-          position: "absolute",
-          bottom: 30,
-          left: 20,
-          right: 20,
-          height: 70,
-          borderRadius: 8,
-          backgroundColor: colors.grey,
+          // borderTopColor: "#66666666",
+          backgroundColor: "transparent",
           borderTopWidth: 0,
+          borderRadius: 10,
         },
+      }}
+      tabBar={(props) => {
+        return (
+          <BlurView
+            style={styles.tabBarStyles}
+            blurType="dark"
+            blurAmount={10}
+            blurRadius={25}
+            overlayColor="black"
+          >
+            <BottomTabBar {...props} />
+          </BlurView>
+        );
       }}
     >
       <Tab.Screen
-        name="CourseNavigation"
+        name="Home"
         component={CourseNavigation}
         options={{
           tabBarIcon: ({ color }) => (
@@ -70,5 +81,17 @@ const AppNavigation = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBarStyles: {
+    position: "absolute",
+    bottom: 30,
+    left: 20,
+    right: 20,
+    height: 70,
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+});
 
 export default AppNavigation;

@@ -77,13 +77,8 @@ const Welcome = ({ navigation }) => {
         </View>
         <AppButton
           onPress={() => navigation.navigate("PhoneNumber")}
-          title="Create an account"
+          title="Continue with Phone"
           bgColor={colors.primary}
-        />
-        <AppButton
-          title="Log In"
-          bgColor={colors.white}
-          fontColor={colors.black}
         />
       </View>
     </Screen>
