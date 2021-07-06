@@ -130,6 +130,7 @@ const CourseInfo = ({ navigation }) => {
       />
 
       <FlatList
+        keyExtractor={(item) => item.id.toString()}
         bounces={false}
         data={data}
         renderItem={({ item, index }) => {

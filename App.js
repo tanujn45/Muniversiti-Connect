@@ -13,6 +13,7 @@ import PhoneNumber from "./app/screens/PhoneNumber";
 import OTPVerification from "./app/screens/OTPVerification";
 import CompleteProfile from "./app/screens/CompleteProfile";
 import AppNavigation from "./app/navigation/AppNavigation";
+import TravelNavigation from "./app/navigation/TravelNavigation";
 
 export default function App() {
   let [fontsLoaded] = useFonts({

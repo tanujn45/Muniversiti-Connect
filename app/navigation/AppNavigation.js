@@ -4,11 +4,11 @@ import {
   createBottomTabNavigator,
   BottomTabBar,
 } from "@react-navigation/bottom-tabs";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import CourseInfo from "../screens/CourseInfo";
 import colors from "../constants/colors";
 import CourseNavigation from "./CourseNavigation";
-import { BlurView } from "expo-blur";
+import TravelNavigation from "./TravelNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,23 +21,13 @@ const AppNavigation = () => {
         showLabel: false,
         style: {
           // borderTopColor: "#66666666",
-          backgroundColor: "transparent",
+          backgroundColor: colors.black,
           borderTopWidth: 0,
-          borderRadius: 10,
+          // borderRadius: 10,
         },
       }}
       tabBar={(props) => {
-        return (
-          <BlurView
-            style={styles.tabBarStyles}
-            blurType="dark"
-            blurAmount={10}
-            blurRadius={25}
-            overlayColor="black"
-          >
-            <BottomTabBar {...props} />
-          </BlurView>
-        );
+        return <BottomTabBar {...props} />;
       }}
     >
       <Tab.Screen
@@ -68,12 +58,12 @@ const AppNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="CourseInfo"
-        component={CourseInfo}
+        name="TravelNavigation"
+        component={TravelNavigation}
         options={{
           tabBarIcon: ({ color }) => (
             <View style={{ position: "absolute", top: "50%" }}>
-              <MaterialIcons color={color} size={30} name="person" />
+              <FontAwesome name="plane" color={color} size={30} />
             </View>
           ),
         }}
@@ -85,11 +75,11 @@ const AppNavigation = () => {
 const styles = StyleSheet.create({
   tabBarStyles: {
     position: "absolute",
-    bottom: 30,
-    left: 20,
-    right: 20,
+    bottom: 0,
+    left: 0,
+    right: 0,
     height: 70,
-    borderRadius: 8,
+    // borderRadius: 8,
     overflow: "hidden",
   },
 });
