@@ -43,8 +43,10 @@ const Home = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.categoriesContainer}>
           <View style={styles.homeHeading}>
-            <AppTitle fontColor={colors.white}>Learn from the best</AppTitle>
-            <Feather name="user" size={30} color={colors.white} />
+            <AppHeading fontColor={colors.white}>
+              Learn from the best
+            </AppHeading>
+            <Feather name="user" size={25} color={colors.white} />
           </View>
         </View>
         <View style={styles.topCoursesContainer}>

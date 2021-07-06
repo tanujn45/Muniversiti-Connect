@@ -5,6 +5,7 @@ import {
   ScrollView,
   SafeAreaView,
   FlatList,
+  Image,
 } from "react-native";
 import AppTitle from "../components/AppTitle";
 import AppHeading2 from "../components/AppHeading2";
@@ -13,6 +14,8 @@ import colors from "../constants/colors";
 import AppButton from "../components/AppButton";
 import VideoCard from "../components/VideoCard";
 import Pill from "../components/Pill";
+
+const CAROUSEL_HEIGHT = 400;
 
 const CourseInfo = ({ navigation }) => {
   const data = [
@@ -69,48 +72,70 @@ const CourseInfo = ({ navigation }) => {
   const Header = () => {
     return (
       <View>
-        <AppTitle>MUN Training</AppTitle>
-        <AppHeading2 style={{ marginVertical: 7 }}>Madhur Oza</AppHeading2>
-        <AppText>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud amet.Velit duis enim velit mollit.
-        </AppText>
+        <View style={styles.placeholder} />
         <View
-          style={{ flexWrap: "wrap", marginVertical: 10, flexDirection: "row" }}
+          style={[
+            {
+              backgroundColor: colors.black,
+              borderTopLeftRadius: 50,
+              borderTopRightRadius: 50,
+              paddingTop: 40,
+            },
+            styles.content,
+          ]}
         >
-          <Pill text="Public Speaking" />
-          <Pill text="Over 1500  Enrolled" />
-        </View>
+          <AppTitle>MUN Training</AppTitle>
+          <AppHeading2 style={{ marginVertical: 7 }}>Madhur Oza</AppHeading2>
+          <AppText>
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+            sint. Velit officia consequat duis enim velit mollit. Exercitation
+            veniam consequat sunt nostrud amet.Velit duis enim velit mollit.
+          </AppText>
+          <View
+            style={{
+              flexWrap: "wrap",
+              marginVertical: 10,
+              flexDirection: "row",
+            }}
+          >
+            <Pill text="Public Speaking" />
+            <Pill text="Over 1500  Enrolled" />
+          </View>
 
-        <AppButton
-          style={{ marginVertical: 15 }}
-          bgColor={colors.primary}
-          title="Buy Now for Rs 999/-"
-        />
-        <AppText
-          style={{
-            textTransform: "uppercase",
-            fontFamily: "PlusJakartaSans-Bold",
-            marginTop: 20,
-            marginBottom: 15,
-          }}
-        >
-          Lessons
-        </AppText>
+          <AppButton
+            style={{ marginVertical: 15 }}
+            bgColor={colors.primary}
+            title="Buy Now for Rs 999/-"
+          />
+          <AppText
+            style={{
+              textTransform: "uppercase",
+              fontFamily: "PlusJakartaSans-Bold",
+              marginTop: 20,
+              marginBottom: 15,
+            }}
+          >
+            Lessons
+          </AppText>
+        </View>
       </View>
     );
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <Image
+        source={require("../assets/temp/muntraining.png")}
+        style={[StyleSheet.absoluteFill, styles.img]}
+      />
+
       <FlatList
-        style={styles.content}
+        bounces={false}
         data={data}
         renderItem={({ item, index }) => {
           return (
             <VideoCard
-              style={{ marginBottom: 20 }}
+              style={{ paddingBottom: 20 }}
               vidData={item}
               vidIndex={index}
               onPress={() => navigation.navigate("Lesson")}
@@ -119,7 +144,7 @@ const CourseInfo = ({ navigation }) => {
         }}
         ListHeaderComponent={Header}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -128,8 +153,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.black,
   },
+  placeholder: {
+    height: CAROUSEL_HEIGHT - 50,
+  },
+  insideContainer: {
+    backgroundColor: colors.black,
+  },
   content: {
     padding: 20,
+  },
+  img: {
+    width: "100%",
+    height: CAROUSEL_HEIGHT,
   },
 });
 

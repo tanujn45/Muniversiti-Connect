@@ -9,54 +9,60 @@ import AppHeading2 from "./AppHeading2";
 
 const VideoCard = ({ vidData, vidIndex, onPress, style }) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={style}>
-      <Card>
-        <View style={styles.videoSection}>
-          <View style={styles.videoThumbnail}>
-            <Image
-              style={styles.thumbnailImg}
-              source={{
-                uri: vidData.uri,
-              }}
-            />
-            <View
-              style={{
-                borderTopLeftRadius: 6,
-                borderBottomRightRadius: 6,
-                paddingHorizontal: 7,
-                paddingVertical: 2,
-                backgroundColor: colors.transparent4,
-              }}
-            >
-              <AppText
-                style={{ fontFamily: "PlusJakartaSans-Bold", fontSize: 13 }}
-                fontColor={colors.white}
+    <View style={{ backgroundColor: colors.black }}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={onPress}
+        style={[style, { paddingHorizontal: 20 }]}
+      >
+        <Card>
+          <View style={styles.videoSection}>
+            <View style={styles.videoThumbnail}>
+              <Image
+                style={styles.thumbnailImg}
+                source={{
+                  uri: vidData.uri,
+                }}
+              />
+              <View
+                style={{
+                  borderTopLeftRadius: 6,
+                  borderBottomRightRadius: 6,
+                  paddingHorizontal: 7,
+                  paddingVertical: 2,
+                  backgroundColor: colors.transparent4,
+                }}
               >
-                {vidData.duration}
+                <AppText
+                  style={{ fontFamily: "PlusJakartaSans-Bold", fontSize: 13 }}
+                  fontColor={colors.white}
+                >
+                  {vidData.duration}
+                </AppText>
+              </View>
+            </View>
+            <View style={styles.videoInfo}>
+              <AppHeading2 style={{ fontSize: 18 }}>
+                {vidData.lessonTitle}
+              </AppHeading2>
+              <AppText
+                fontColor={colors.grey4}
+                style={{
+                  fontFamily: "PlusJakartaSans-Bold",
+                  textTransform: "uppercase",
+                  fontSize: 12,
+                }}
+              >
+                Lesson {`${vidIndex + 1}`}
               </AppText>
             </View>
           </View>
-          <View style={styles.videoInfo}>
-            <AppHeading2 style={{ fontSize: 18 }}>
-              {vidData.lessonTitle}
-            </AppHeading2>
-            <AppText
-              fontColor={colors.grey4}
-              style={{
-                fontFamily: "PlusJakartaSans-Bold",
-                textTransform: "uppercase",
-                fontSize: 12,
-              }}
-            >
-              Lesson {`${vidIndex + 1}`}
-            </AppText>
-          </View>
-        </View>
-        <AppText style={{ marginTop: 20 }} fontColor={colors.transparent3}>
-          {vidData.description}
-        </AppText>
-      </Card>
-    </TouchableOpacity>
+          <AppText style={{ marginTop: 20 }} fontColor={colors.transparent3}>
+            {vidData.description}
+          </AppText>
+        </Card>
+      </TouchableOpacity>
+    </View>
   );
 };
 
