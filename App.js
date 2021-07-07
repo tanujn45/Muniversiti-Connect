@@ -14,6 +14,8 @@ import OTPVerification from "./app/screens/OTPVerification";
 import CompleteProfile from "./app/screens/CompleteProfile";
 import AppNavigation from "./app/navigation/AppNavigation";
 import TravelNavigation from "./app/navigation/TravelNavigation";
+import TravelHome from "./app/screens/TravelHome";
+import TravelInfo from "./app/screens/TravelInfo";
 
 export default function App() {
   let [fontsLoaded] = useFonts({

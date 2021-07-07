@@ -13,9 +13,9 @@ import AppButton from "../components/AppButton";
 import colors from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 
-const { width, height } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("window");
 
-const TravelHome = () => {
+const TravelHome = ({ navigation }) => {
   const data = [
     {
       id: 1,
@@ -40,16 +40,18 @@ const TravelHome = () => {
         bounces={false}
         keyExtractor={(item) => item.id.toString()}
         data={data}
+        snapToStart={"start"}
         snapToInterval={height}
         decelerationRate={"fast"}
+        pagingEnabled
         renderItem={({ item, index }) => {
           return (
-            <View style={{ position: "relative" }}>
+            <View style={{ position: "relative", marginBottom: 70 }}>
               <Image
                 source={{
                   uri: item.uri,
                 }}
-                style={{ width: width, height: height }}
+                style={{ width: width, height: height - 70 }}
               />
               <LinearGradient
                 // Background Linear Gradient
@@ -62,14 +64,25 @@ const TravelHome = () => {
                   height: height / 2,
                 }}
               />
-              <View style={{ position: "absolute", padding: 20, bottom: 40 }}>
+              <View
+                style={{
+                  position: "absolute",
+                  right: 20,
+                  left: 20,
+                  bottom: 80,
+                }}
+              >
                 <AppHeading
                   style={{ marginBottom: 30 }}
                   fontColor={colors.white}
                 >
                   {item.description}
                 </AppHeading>
-                <AppButton bgColor={colors.primary} title="Explore" />
+                <AppButton
+                  bgColor={colors.primary}
+                  onPress={() => navigation.navigate("TravelInfo")}
+                  title="Explore"
+                />
               </View>
             </View>
           );
@@ -81,8 +94,10 @@ const TravelHome = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "column",
+    height: height,
+    backgroundColor: colors.black,
   },
 });
 
