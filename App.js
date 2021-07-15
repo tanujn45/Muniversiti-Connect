@@ -30,7 +30,7 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <AppNavigation />
+        <AuthNavigation />
       </NavigationContainer>
     );
   }
